@@ -1,0 +1,49 @@
+<svg
+  class="loader-ring"
+  viewBox="25 25 50 50"
+  stroke-width="5"
+>
+  <circle cx="50" cy="50" r="20" />
+</svg>
+<style>
+.loader-ring {
+  --uib-size: 40px;
+  --uib-speed: 2s;
+  --uib-color: white;
+
+  height: var(--uib-size);
+  width: var(--uib-size);
+  vertical-align: middle;
+  transform-origin: center;
+  animation: loaderringrotate var(--uib-speed) linear infinite;
+}
+
+.loader-ring circle {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: loaderringstretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+}
+
+@keyframes loaderringrotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderringstretch {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dashoffset: -124px;
+  }
+}
+</style>
