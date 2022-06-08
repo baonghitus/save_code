@@ -88,7 +88,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Vite Docs111
+            Vite Docs
           </a>
         </p>
       </header>
