@@ -1,6 +1,6 @@
-import App from '@/pages/App'
+import App from '@/App'
 
-import '@/styles/App.css'
+// import '@/styles/App.css'
 
 function Test() {
   return (

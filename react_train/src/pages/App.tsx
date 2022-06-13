@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import '@/styles/App.css'
+// import '@/styles/App.scss'
 interface Name {
   title: string
   first: string
@@ -88,7 +88,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Vite Do
+            Vite Docs
           </a>
         </p>
       </header>
