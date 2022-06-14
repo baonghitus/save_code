@@ -5,7 +5,7 @@ import Header from '@/components/shared/Header'
 
 const Layout: FC = () => {
   return (
-    <div className="">
+    <div className="text-center">
       <Header />
       <main className="">
         <Outlet />
