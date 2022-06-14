@@ -1,16 +1,5 @@
-import type { PostType } from '@/types/index'
 import { useQuery } from 'react-query'
-import axios from 'axios'
-
-export const getPostList = async () => {
-  const result: PostType[] = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-    .then((res) => res.json())
-    .catch((error) => {
-      console.error(error)
-      return []
-    })
-  return result
-}
+import { getPost, getPostList, getUser } from '@/api/index'
 
 export const useQueryPosts = () => {
   return useQuery({
@@ -19,3 +8,16 @@ export const useQueryPosts = () => {
     staleTime: 6000
   })
 }
+
+export const useQueryPost = (postId: string) => ({
+  queryKey: ['post', postId],
+  queryFn: getPost(postId),
+  staleTime: 6000
+})
+
+export const useQueryUser = (userId: number | undefined) => ({
+  queryKey: ['user', userId],
+  queryFn: () => getUser(userId),
+  staleTime: 6000,
+  enabled: !!userId
+})
