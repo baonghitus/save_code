@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
-
 // routers
 import AppRouters from '@/routers/AppRouters'
 
