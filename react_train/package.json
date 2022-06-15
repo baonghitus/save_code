@@ -1,7 +1,7 @@
 {
-  "name": "react-admin-template",
+  "name": "bao-react-app",
   "private": true,
-  "main": "main/index.js",
+  "main": "./main/index.js",
   "version": "0.0.0",
   "scripts": {
     "devapp": "concurrently \"yarn dev:vite\" \" yarn dev:electron\"",
@@ -74,6 +74,8 @@
     "vitest": "^0.13.0"
   },
   "build": {
+    "appId": "baoapp",
+    "category": "bao.baoapp.app.dmg",
     "asar": true,
     "files": [
       "main",
@@ -81,6 +83,20 @@
     ],
     "directories": {
       "buildResources": "resources"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     }
   }
 }
