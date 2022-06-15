@@ -4,11 +4,11 @@
   "main": "./main/index.js",
   "version": "0.0.0",
   "scripts": {
-    "devapp": "concurrently \"yarn dev:vite\" \" yarn dev:electron\"",
+    "dev": "concurrently \"yarn dev:vite\" \" yarn dev:electron\"",
     "dev:vite": "vite",
     "dev:electron": "npm run build:electron && electron .",
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run build:vite && npm run build:electron",
+    "build:vite": "tsc && vite build",
     "build:electron": "tsc -p electron",
     "preview": "vite preview",
     "prettier": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
@@ -19,7 +19,10 @@
     "test:snap": "vitest -u",
     "lint-staged": "yarn prettier && yarn lint && tsc --noEmit",
     "prepare": "husky install",
-    "format": "yarn prettier && yarn lint:fix"
+    "clean": "rimraf dist main src/out",
+    "format": "yarn prettier && yarn lint:fix",
+    "dist": "npm run build && electron-builder",
+    "pack": "npm run build && electron-builder --dir"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
@@ -76,12 +79,45 @@
   },
   "build": {
     "appId": "baoapp",
+    "productName": "Bao",
     "category": "bao.baoapp.app.dmg",
     "asar": true,
     "files": [
       "main",
       "src/out"
     ],
+    "mac": {
+      "category": "your.app.category.type",
+      "target": [
+        "zip"
+      ]
+    },
+    "win": {
+      "publisherName": "Simon Inc.",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "tar.gz"
+      ]
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "vkiranmaniya",
+        "repo": "accurate",
+        "vPrefixedTagName": true,
+        "private": true,
+        "releaseType": "draft"
+      }
+    ],
+    "dmg": {
+      "icon": "build/icon.icns"
+    },
     "directories": {
       "buildResources": "resources"
     }
