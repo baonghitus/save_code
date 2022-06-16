@@ -1,6 +1,5 @@
 // Native
 import { join } from 'path'
-
 // Packages
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from 'electron'
 import isDev from 'electron-is-dev'

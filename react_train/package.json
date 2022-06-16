@@ -1,8 +1,10 @@
 {
   "name": "bao-react-app",
-  "private": true,
+  "private": false,
   "main": "./main/index.js",
-  "version": "0.0.0",
+  "homepage": "./",
+  "version": "1.0.0",
+  "description": "test app",
   "scripts": {
     "dev": "concurrently \"yarn dev:vite\" \" yarn dev:electron\"",
     "dev:vite": "vite",
@@ -77,49 +79,57 @@
     "vite-tsconfig-paths": "^3.4.1",
     "vitest": "^0.13.0"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "directories": {
+    "output": "release"
+  },
   "build": {
     "appId": "com.example.baoapp",
     "productName": "Bao",
     "category": "bao.baoapp.app.dmg",
     "asar": true,
+    "includeSubNodeModules": "true",
+    "directories": {
+      "output": "release"
+    },
     "files": [
-      "main",
-      "src/out"
+      {
+        "from": ".",
+        "to": ".",
+        "filter": [
+          "main.js",
+          "preload.js"
+        ]
+      },
+      {
+        "from": "dist",
+        "to": "dist",
+        "filter": [
+          "**/*"
+        ]
+      }
     ],
-    "mac": {
-      "category": "your.app.category.type",
+    "linux": {
       "target": [
-        "dmg"
+        "deb"
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        }
       ]
     },
     "win": {
-      "publisherName": "Simon Inc.",
       "target": [
-        "nsis",
-        "zip"
+        "portable"
       ]
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "tar.gz"
-      ]
-    },
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "vkiranmaniya",
-        "repo": "accurate",
-        "vPrefixedTagName": true,
-        "private": true,
-        "releaseType": "draft"
-      }
-    ],
-    "dmg": {
-      "icon": "build/icon.icns"
-    },
-    "directories": {
-      "buildResources": "resources"
     }
   }
 }
