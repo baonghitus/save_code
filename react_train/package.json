@@ -78,7 +78,7 @@
     "vitest": "^0.13.0"
   },
   "build": {
-    "appId": "baoapp",
+    "appId": "com.example.baoapp",
     "productName": "Bao",
     "category": "bao.baoapp.app.dmg",
     "asar": true,
@@ -89,7 +89,7 @@
     "mac": {
       "category": "your.app.category.type",
       "target": [
-        "zip"
+        "dmg"
       ]
     },
     "win": {
